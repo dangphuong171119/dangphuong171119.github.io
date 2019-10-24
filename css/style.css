@@ -200,7 +200,7 @@ section {
 =========================================================================================*/
 
 .heading {
-	padding-bottom: 60px;
+	padding-bottom: 30px;
 }
 
 .heading span {
@@ -757,6 +757,7 @@ footer {
 	font-weight: bold;
 	margin: 20px 0px 20px 0px;
 	text-align: center;
+	line-height: 1.5;
 }
 
 .footer_note {
@@ -834,5 +835,4 @@ footer {
 	color: #d6516d;
 	text-decoration: none;
 	font-size: 20px;
-	margin: 20px;
 }
