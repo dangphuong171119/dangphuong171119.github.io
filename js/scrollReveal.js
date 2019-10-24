@@ -30,31 +30,31 @@ window.scrollReveal = (function (window) {
 
   function scrollReveal(options) {
 
-      this.docElem = window.document.documentElement;
-      this.options = this.extend(this.defaults, options);
-      this.styleBank = [];
+    this.docElem = window.document.documentElement;
+    this.options = this.extend(this.defaults, options);
+    this.styleBank = [];
 
-      if (this.options.init == true) this.init();
+    if (this.options.init == true) this.init();
   }
 
   scrollReveal.prototype = {
 
     defaults: {
-      after:  '0s',
-      enter:  'bottom',
-      move:   '24px',
-      over:   '0.66s',
+      after: '0s',
+      enter: 'bottom',
+      move: '150px',
+      over: '3s',
       easing: 'ease-in-out',
 
-  //  if 0, the element is considered in the viewport as soon as it enters
-  //  if 1, the element is considered in the viewport when it's fully visible
+      //  if 0, the element is considered in the viewport as soon as it enters
+      //  if 1, the element is considered in the viewport when it's fully visible
       viewportFactor: 0.33,
 
-  // if false, animations occur only once
-  // if true, animations occur each time an element enters the viewport
+      // if false, animations occur only once
+      // if true, animations occur each time an element enters the viewport
       reset: false,
 
-  // if true, scrollReveal.init() is automaticaly called upon instantiation
+      // if true, scrollReveal.init() is automaticaly called upon instantiation
       init: true
     },
 
@@ -66,12 +66,12 @@ window.scrollReveal = (function (window) {
 
       var self = this;
 
-  //  Check DOM for the data-scrollReveal attribute
-  //  and initialize all found elements.
+      //  Check DOM for the data-scrollReveal attribute
+      //  and initialize all found elements.
       this.elems = Array.prototype.slice.call(this.docElem.querySelectorAll('[data-scroll-reveal]'));
       this.elems.forEach(function (el, i) {
 
-    //  Capture original style attribute
+        //  Capture original style attribute
         if (!self.styleBank[el]) {
           self.styleBank[el] = el.getAttribute('style');
         }
@@ -90,10 +90,11 @@ window.scrollReveal = (function (window) {
 
       var resizeHandler = function () {
 
-    //  If we’re still waiting for settimeout, reset the timer.
+        //  If we’re still waiting for settimeout, reset the timer.
         if (self.resizeTimeout) {
           clearTimeout(self.resizeTimeout);
         }
+
         function delayed() {
           self._scrollPage();
           self.resizeTimeout = null;
@@ -108,33 +109,33 @@ window.scrollReveal = (function (window) {
     /*=============================================================================*/
 
     _scrollPage: function () {
-        var self = this;
+      var self = this;
 
-        this.elems.forEach(function (el, i) {
-          self.update(el);
-        });
-        this.scrolled = false;
+      this.elems.forEach(function (el, i) {
+        self.update(el);
+      });
+      this.scrolled = false;
     },
 
     /*=============================================================================*/
 
     parseLanguage: function (el) {
 
-  //  Splits on a sequence of one or more commas or spaces.
+      //  Splits on a sequence of one or more commas or spaces.
       var words = el.getAttribute('data-scroll-reveal').split(/[, ]+/),
-          parsed = {};
+        parsed = {};
 
-      function filter (words) {
+      function filter(words) {
         var ret = [],
 
-            blacklist = [
-              "from",
-              "the",
-              "and",
-              "then",
-              "but",
-              "with"
-            ];
+          blacklist = [
+            "from",
+            "the",
+            "and",
+            "then",
+            "but",
+            "with"
+          ];
 
         words.forEach(function (word, i) {
           if (blacklist.indexOf(word) > -1) {
@@ -204,10 +205,11 @@ window.scrollReveal = (function (window) {
 
     update: function (el) {
 
-      var css   = this.genCSS(el);
+      var css = this.genCSS(el);
       var style = this.styleBank[el];
 
-      if (style != null) style += ";"; else style = "";
+      if (style != null) style += ";";
+      else style = "";
 
       if (!el.getAttribute('data-scroll-reveal-initialized')) {
         el.setAttribute('style', style + css.initial);
@@ -225,8 +227,8 @@ window.scrollReveal = (function (window) {
 
       if (this.isElementInViewport(el, this.options.viewportFactor)) {
         el.setAttribute('style', style + css.target + css.transition);
-    //  Without reset enabled, we can safely remove the style tag
-    //  to prevent CSS specificy wars with authored CSS.
+        //  Without reset enabled, we can safely remove the style tag
+        //  to prevent CSS specificy wars with authored CSS.
         if (!this.options.reset) {
           setTimeout(function () {
             if (style != "") {
@@ -234,10 +236,10 @@ window.scrollReveal = (function (window) {
             } else {
               el.removeAttribute('style');
             }
-            el.setAttribute('data-scroll-reveal-complete',true);
+            el.setAttribute('data-scroll-reveal-complete', true);
           }, css.totalDuration);
         }
-      return;
+        return;
       }
     },
 
@@ -245,8 +247,8 @@ window.scrollReveal = (function (window) {
 
     genCSS: function (el) {
       var parsed = this.parseLanguage(el),
-          enter,
-          axis;
+        enter,
+        axis;
 
       if (parsed.enter) {
 
@@ -273,43 +275,42 @@ window.scrollReveal = (function (window) {
         }
       }
 
-  //  After all values are parsed, let’s make sure our our
-  //  pixel distance is negative for top and left entrances.
-  //
-  //  ie. "move 25px from top" starts at 'top: -25px' in CSS.
+      //  After all values are parsed, let’s make sure our our
+      //  pixel distance is negative for top and left entrances.
+      //
+      //  ie. "move 25px from top" starts at 'top: -25px' in CSS.
 
       if (enter == "top" || enter == "left") {
         if (parsed.move) {
           parsed.move = "-" + parsed.move;
-        }
-        else {
+        } else {
           parsed.move = "-" + this.options.move;
         }
       }
 
-      var dist   = parsed.move    || this.options.move,
-          dur    = parsed.over    || this.options.over,
-          delay  = parsed.after   || this.options.after,
-          easing = parsed.easing  || this.options.easing;
+      var dist = parsed.move || this.options.move,
+        dur = parsed.over || this.options.over,
+        delay = parsed.after || this.options.after,
+        easing = parsed.easing || this.options.easing;
 
       var transition = "-webkit-transition: -webkit-transform " + dur + " " + easing + " " + delay + ",  opacity " + dur + " " + easing + " " + delay + ";" +
-                               "transition: transform " + dur + " " + easing + " " + delay + ", opacity " + dur + " " + easing + " " + delay + ";" +
-                      "-webkit-perspective: 1000;" +
-              "-webkit-backface-visibility: hidden;";
+        "transition: transform " + dur + " " + easing + " " + delay + ", opacity " + dur + " " + easing + " " + delay + ";" +
+        "-webkit-perspective: 1000;" +
+        "-webkit-backface-visibility: hidden;";
 
-  //  The same as transition, but removing the delay for elements fading out.
+      //  The same as transition, but removing the delay for elements fading out.
       var reset = "-webkit-transition: -webkit-transform " + dur + " " + easing + " 0s,  opacity " + dur + " " + easing + " " + delay + ";" +
-                          "transition: transform " + dur + " " + easing + " 0s,  opacity " + dur + " " + easing + " " + delay + ";" +
-                 "-webkit-perspective: 1000;" +
-         "-webkit-backface-visibility: hidden;";
+        "transition: transform " + dur + " " + easing + " 0s,  opacity " + dur + " " + easing + " " + delay + ";" +
+        "-webkit-perspective: 1000;" +
+        "-webkit-backface-visibility: hidden;";
 
       var initial = "-webkit-transform: translate" + axis + "(" + dist + ");" +
-                            "transform: translate" + axis + "(" + dist + ");" +
-                              "opacity: 0;";
+        "transform: translate" + axis + "(" + dist + ");" +
+        "opacity: 0;";
 
       var target = "-webkit-transform: translate" + axis + "(0);" +
-                           "transform: translate" + axis + "(0);" +
-                             "opacity: 1;";
+        "transform: translate" + axis + "(0);" +
+        "opacity: 1;";
       return {
         transition: transition,
         initial: initial,
@@ -319,16 +320,16 @@ window.scrollReveal = (function (window) {
       };
     },
 
-    getViewportH : function () {
+    getViewportH: function () {
       var client = this.docElem['clientHeight'],
         inner = window['innerHeight'];
 
       return (client < inner) ? inner : client;
     },
 
-    getOffset : function(el) {
+    getOffset: function (el) {
       var offsetTop = 0,
-          offsetLeft = 0;
+        offsetLeft = 0;
 
       do {
         if (!isNaN(el.offsetTop)) {
@@ -345,20 +346,20 @@ window.scrollReveal = (function (window) {
       }
     },
 
-    isElementInViewport : function(el, h) {
+    isElementInViewport: function (el, h) {
       var scrolled = window.pageYOffset,
-          viewed = scrolled + this.getViewportH(),
-          elH = el.offsetHeight,
-          elTop = this.getOffset(el).top,
-          elBottom = elTop + elH,
-          h = h || 0;
+        viewed = scrolled + this.getViewportH(),
+        elH = el.offsetHeight,
+        elTop = this.getOffset(el).top,
+        elBottom = elTop + elH,
+        h = h || 0;
 
-      return (elTop + elH * h) <= viewed
-          && (elBottom) >= scrolled
-          || (el.currentStyle? el.currentStyle : window.getComputedStyle(el, null)).position == 'fixed';
+      return (elTop + elH * h) <= viewed &&
+        (elBottom) >= scrolled ||
+        (el.currentStyle ? el.currentStyle : window.getComputedStyle(el, null)).position == 'fixed';
     },
 
-    extend: function (a, b){
+    extend: function (a, b) {
       for (var key in b) {
         if (b.hasOwnProperty(key)) {
           a[key] = b[key];
