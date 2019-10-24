@@ -547,7 +547,7 @@ section {
 =========================================================================================*/
 
 footer {
-	background: #222;
+	background: #dddddd;
 	padding: 30px 0;
 }
 
@@ -713,4 +713,17 @@ footer {
 		width: 100%;
 	}
 
+}
+
+.time {
+	color: rgb(241, 18, 18);
+	margin: 10px 0;
+}
+
+.main_events {
+	color: rgb(241, 18, 18);
+}
+
+.modal-xl {
+	max-width: 1140;
 }

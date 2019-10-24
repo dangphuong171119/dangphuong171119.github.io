@@ -105,7 +105,15 @@
 		// Fancybox
 
 		$('.fancybox').fancybox({
-			openEffect: 'none'
+			openEffect: 'elastic',
+			nextEffect: 'elastic',
+			prevEffect: 'elastic',
+			openSpeed: 'slow',
+			closeSpeed: 'slow',
+			nextSpeed: 'slow',
+			prevSpeed: 'slow',
+			autoPlay: true,
+			playSpeed: 8000,
 		});
 
 		// ====================================================================

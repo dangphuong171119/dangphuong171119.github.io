@@ -335,7 +335,7 @@ body {
   font-family: "PT Serif", Georgia, "Times New Roman", Times, serif;
   font-size: 14px;
   /* line-height: 1.714; */
-  color: #999999;
+  color: #444444;
   background-color: #ffffff;
 }
 
@@ -4928,8 +4928,8 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-default {
-  background-color: #f8f9fa;
-  border-color: #f8f9fa;
+  background-color: #e8e8e8;
+  border-color: #e8e8e8;
 }
 
 .navbar-default .navbar-brand {
