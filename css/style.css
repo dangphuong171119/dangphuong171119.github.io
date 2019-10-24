@@ -22,7 +22,6 @@ h1 {
 }
 
 h2 {
-	color: #fff;
 	font-family: 'Engagement', cursive;
 	font-weight: normal;
 	margin: 0;
@@ -168,7 +167,7 @@ section {
 	text-transform: uppercase;
 }
 
-.navbar.header {
+.navbar.fixed {
 	left: 0;
 	position: fixed;
 	top: 0;
@@ -742,4 +741,67 @@ footer {
 	font-weight: bold;
 	margin: 20px 0px 20px 0px;
 	text-align: center;
+}
+
+.footer_note {
+	color: #d6516d;
+	margin: 0px 0px 50px 0px;
+}
+
+.to-top-wrapper {
+	font-size: 30px;
+	display: block;
+	cursor: pointer;
+	margin: -25px auto 20px;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #E6E9EA;
+	background: #fff;
+}
+
+.navbar-footer {
+	background: #fff;
+}
+
+.fa-beat {
+	animation: fa-beat 5s ease infinite;
+}
+
+@keyframes fa-beat {
+	0% {
+		transform: scale(1);
+	}
+
+	5% {
+		transform: scale(1.35);
+	}
+
+	20% {
+		transform: scale(1);
+	}
+
+	30% {
+		transform: scale(1);
+	}
+
+	35% {
+		transform: scale(1.35);
+	}
+
+	50% {
+		transform: scale(1);
+	}
+
+	55% {
+		transform: scale(1.35);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+}
+
+.heart {
+	color: red;
 }
