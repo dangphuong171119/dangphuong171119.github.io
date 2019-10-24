@@ -629,11 +629,6 @@ footer {
 		font-size: 50px;
 	}
 
-	.h1-name {
-		margin: 30px 0 0 0;
-		font-size: 40px;
-	}
-
 	section {
 		padding: 30px 0;
 	}
@@ -833,5 +828,4 @@ footer {
 
 .h1-name {
 	margin: 30px 0 0 0;
-	font-size: 70px;
 }
