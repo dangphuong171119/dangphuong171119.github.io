@@ -626,7 +626,7 @@ footer {
 	}
 
 	h1 {
-		font-size: 54px;
+		font-size: 50px;
 	}
 
 	section {
@@ -828,4 +828,5 @@ footer {
 
 .h1-name {
 	margin: 30px 0 0 0;
+	font-size: 70px;
 }
