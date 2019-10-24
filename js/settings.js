@@ -50,7 +50,7 @@
 
 		//var weddingDate = new Date();
 		//var weddingDate = new Date(weddingDate.getFullYear() + 1, 1 - 1, 1);
-		var weddingDate = new Date("November 17, 2018 10:00:00")
+		var weddingDate = new Date("November 17, 2019 10:00:00")
 		$(".countdown").countdown({
 			until: weddingDate,
 			format: 'DHMS'
