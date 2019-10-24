@@ -150,13 +150,14 @@ section {
 .countdown {
 	opacity: 1 !important;
 	bottom: 10px;
-	/* left: 35%; */
-	left: 3.5%;
+	left: 0;
 	right: 0;
 	margin: auto;
 	position: absolute;
+	display: inline-block;
 	width: 450px;
 	z-index: 100;
+	text-align: center;
 }
 
 /* NAVBAR
@@ -664,11 +665,25 @@ footer {
 	}
 
 	.countdown {
-		margin-left: 140px;
-		width: 280px;
+		/* margin-left: 140px; */
+		/* width: 280px; */
+		opacity: 1 !important;
+		bottom: 10px;
+		left: 22%;
+		right: 0;
+		margin: auto;
+		position: absolute;
+		display: inline-block;
+		width: 450px;
+		z-index: 100;
+		text-align: center;
 	}
 
 	.countdown-show5 .countdown-section {
+		width: 51px !important;
+	}
+
+	.countdown-show4 .countdown-section {
 		width: 51px !important;
 	}
 

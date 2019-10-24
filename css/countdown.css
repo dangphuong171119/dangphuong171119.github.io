@@ -1,13 +1,7 @@
 /* jQuery Countdown styles 2.0.0. */
 .is-countdown {}
 
-.countdown-rtl {
-	direction: rtl;
-}
 
-.countdown-holding span {
-	color: #888;
-}
 
 .countdown-row {
 	clear: both;
@@ -29,7 +23,7 @@
 }
 
 .countdown-show4 .countdown-section {
-	width: 20%;
+	width: 100px;
 }
 
 .countdown-show5 .countdown-section {
