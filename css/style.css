@@ -16,7 +16,7 @@ body {
 
 h1 {
 	color: #fff;
-	font-family: 'Engagement', cursive;
+	font-family: 'Engagement', cursive !important;
 	font-weight: normal;
 	margin: 0;
 }
@@ -829,7 +829,6 @@ footer {
 
 .h1-name {
 	margin: 30px 0 0 0;
-	font-family: "PT Serif", cursive !important;
 }
 
 .card_link {
